@@ -1,6 +1,6 @@
 FROM  alpine/git as git
 
-ADD . /fonte
+# ADD . /fonte
 WORKDIR /fonte
 
 RUN git clone https://luiz_saluti@bitbucket.org/luiz_saluti/primefaces.git
@@ -50,7 +50,7 @@ COPY --from=git /fonte/primefaces /fonte
 RUN mvn clean package
 
 FROM jboss/wildfly
-ADD . /fonte
+# ADD . /fonte
 WORKDIR /fonte
 COPY --from=build /fonte/target/PrimeFacesMockingTest.war /opt/jboss/wildfly/standalone/deployments/
 
